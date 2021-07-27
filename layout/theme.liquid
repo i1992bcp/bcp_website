@@ -8,7 +8,7 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    {%- if settings.favicon != blank -%}
+    {% comment %} {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
     {%- endif -%}
 
@@ -24,10 +24,10 @@
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     {{ content_for_header }}
 
-    {%- liquid
+    {% comment %} {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
       assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
@@ -101,11 +101,11 @@
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
 
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script> {% endcomment %}
   </head>
 
   <body>
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+    {% comment %} <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
@@ -139,6 +139,6 @@
         soldOut: `{{ 'products.product.sold_out' | t }}`,
         unavailable: `{{ 'products.product.unavailable' | t }}`,
       }
-    </script>
+    </script> {% endcomment %}
   </body>
 </html>
